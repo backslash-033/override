@@ -77,7 +77,7 @@ For this we need to understand what will be on the stack at the moment of our co
 ```
 
 This is how the stack is made when we redirect the execution.
-We do not care where `system()` returns becaus it would've already done its job,
+We do not care where `system()` returns becaus it would've already done it's job,
 so I'm just gonna replace it with `AAAA` (`0x41414141`).
 Now we only need to have the addres of "/bin/sh".
 We can find it in the libc like this:
