@@ -2,17 +2,17 @@
 
 int main(int argc, const char **argv, const char **envp)
 {
-    char s[100]; // [esp+28h] [ebp-70h] BYREF
-    unsigned int i; // [esp+8Ch] [ebp-Ch]
+    char str[100];
+    unsigned int i;
 
     i = 0;
-    fgets(s, 100, stdin);
-    for ( i = 0; i < strlen(s); ++i )
+    fgets(str, 100, stdin);
+    for ( i = 0; i < strlen(str); ++i )
     {
         //  0x41 'A'     0x5a 'Z'
-        if (s[i] > 65 && s[i] <= 90)
-            s[i] ^= 0x20;
+        if (str[i] > 65 && str[i] <= 90)
+            str[i] ^= 0x20;
     }
-    printf(s);
+    printf(str);
     exit(0);
 }
