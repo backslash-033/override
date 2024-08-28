@@ -7,7 +7,7 @@ int main(int argc, const char **argv, const char **envp)
 
     i = 0;
     fgets(str, 100, stdin);
-    for ( i = 0; i < strlen(str); ++i )
+    for (i = 0; i < strlen(str); ++i)
     {
         //  0x41 'A'     0x5a 'Z'
         if (str[i] > 65 && str[i] <= 90)
