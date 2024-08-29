@@ -3,7 +3,7 @@
 typedef struct data {
 	char	msg[140];
 	char	usr[40];
-	short	msg_length;
+	int	msg_length;
 }	data;
 
 int secret_backdoor()
