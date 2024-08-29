@@ -3,7 +3,7 @@
 typedef struct data {
 	char	msg[140];
 	char	usr[40];
-	int	msg_length;
+	int		msg_length;
 }	data;
 
 int secret_backdoor()
@@ -22,7 +22,7 @@ char *set_msg(data *d)
 	puts(">: Msg @Unix-Dude");
 	printf(">>: ");
 	fgets(s, 1024, stdin);
-	return strncpy(d->msg, s, d->msg_length); // last arg 140 ?
+	return strncpy(d->msg, s, d->msg_length);
 }
 
 int set_username(data *d)
