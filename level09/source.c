@@ -6,6 +6,14 @@ typedef struct data {
 	short	msg_length;
 }	data;
 
+int secret_backdoor()
+{
+	char s[128];
+
+	fgets(s, 128, stdin);
+	return system(s);
+}
+
 char *set_msg(data *d)
 {
 	char s[1024];
